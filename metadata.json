@@ -1,0 +1,8 @@
+{
+  "name": "Copy of GeminiOS",
+  "description": "A futuristic web-based operating system powered by Google Gemini, featuring a desktop environment, multi-window support, and integrated AI capabilities.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

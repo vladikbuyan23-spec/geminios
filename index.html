@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>GeminiOS Mobile</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #000;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 0px;
+            display: none;
+        }
+
+        /* Анимации загрузки */
+        @keyframes boot-hardware {
+            0% { opacity: 0; transform: scale(0.85); filter: blur(5px); letter-spacing: 0.1em; }
+            20% { opacity: 1; transform: scale(1); filter: blur(0px); letter-spacing: 0.3em; }
+            80% { opacity: 1; transform: scale(1.02); filter: blur(0px); letter-spacing: 0.35em; }
+            100% { opacity: 0; transform: scale(1.1); filter: blur(15px); letter-spacing: 0.5em; }
+        }
+        @keyframes boot-os {
+            0% { opacity: 0; transform: scale(1.2); filter: blur(20px); }
+            30% { opacity: 1; transform: scale(1); filter: blur(0px); }
+            70% { opacity: 1; filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)); }
+            100% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+        }
+        @keyframes desktop-reveal {
+            from { opacity: 0; transform: scale(1.05); filter: blur(20px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0px); }
+        }
+        @keyframes logo-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes hardware-glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255,255,255,0.1); }
+            50% { text-shadow: 0 0 25px rgba(255,255,255,0.5); }
+        }
+
+        .animate-boot-hardware {
+            animation: boot-hardware 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .animate-hardware-glow {
+            animation: hardware-glow 2s ease-in-out infinite;
+        }
+        .animate-boot-os {
+            animation: boot-os 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .animate-desktop-reveal {
+            animation: desktop-reveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .gemini-gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logo-gradient 3s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .pt-safe { padding-top: env(safe-area-inset-top); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<script>
+    window.onerror = function(message, source, lineno, colno, error) {
+        console.error("GeminiOS Error:", message);
+        return false;
+    };
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
